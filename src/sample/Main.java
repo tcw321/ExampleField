@@ -66,12 +66,19 @@ public class Main extends Application
         gc.setStroke( Color.BLACK );
         gc.setLineWidth(1);
 
-        Sprite robot = new Sprite();
-        robot.setPosition(200, 0);
+        Sprite robotSprite = new Sprite();
+        robotSprite.setPosition(200, 0);
 
         LongValue lastNanoTime = new LongValue( System.nanoTime() );
 
         IntValue score = new IntValue(0);
+
+        KeyBoard theKeyBoard = new KeyBoard();
+
+        new KeyBoardButton(theKeyBoard, "LEFT");
+        new KeyBoardButton(theKeyBoard, "RIGHT");
+        new KeyBoardButton(theKeyBoard, "UP");
+        new KeyBoardButton(theKeyBoard, "DOWN");
 
         new AnimationTimer()
         {
@@ -83,22 +90,24 @@ public class Main extends Application
 
                 // game logic
 
-                robot.setVelocity(0,0);
-                if (input.contains("LEFT"))
-                    robot.addVelocity(-50,0);
-                if (input.contains("RIGHT"))
-                    robot.addVelocity(50,0);
-                if (input.contains("UP"))
-                    robot.addVelocity(0,-50);
-                if (input.contains("DOWN"))
-                    robot.addVelocity(0,50);
+                theKeyBoard.updateCommand(input);
 
-                robot.update(elapsedTime);
+                robotSprite.setVelocity(0,0);
+                if (input.contains("LEFT"))
+                    robotSprite.addVelocity(-50,0);
+                if (input.contains("RIGHT"))
+                    robotSprite.addVelocity(50,0);
+                if (input.contains("UP"))
+                    robotSprite.addVelocity(0,-50);
+                if (input.contains("DOWN"))
+                    robotSprite.addVelocity(0,50);
+
+                robotSprite.update(elapsedTime);
 
                 // render
 
                 gc.clearRect(0, 0, 512,512);
-                robot.render( gc );
+                robotSprite.render( gc );
 
                 String pointsText = "Robotics Simulation";
                 gc.fillText( pointsText, 360, 36 );
