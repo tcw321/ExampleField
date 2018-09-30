@@ -81,18 +81,18 @@ public class Main extends Application
         theRobot.robotInit();
 
         Timeline timeline = new Timeline(new KeyFrame(Duration.millis(20), ev -> {
-            double elapsedTime = 0.020;
-            theRobot.oi.theKeyBoard.updateCommand(input, elapsedTime);
+
+            theRobot.oi.theKeyBoard.updateCommand(input);
 
             gc.clearRect(0, 0, 512,512);
             robotSprite.render( gc );
 
-            String pointsText = "Robotics Sim " + elapsedTime;
+            String pointsText = "Robotics Sim " ;
             gc.fillText( pointsText, 250, 36 );
             gc.strokeText( pointsText, 250, 36 );
 
         }));
-        
+
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
 

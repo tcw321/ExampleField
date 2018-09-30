@@ -15,9 +15,9 @@ public class KeyBoardButton {
         return name;
     }
 
-    public void run(double elapsedTime)
+    public void run()
     {
-        command.execute(elapsedTime);
+        command.execute();
     }
 
     public void end()

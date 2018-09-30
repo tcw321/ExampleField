@@ -17,9 +17,9 @@ public class DriveByKeyboard extends Command {
     public void initialize() { }
 
     @Override
-    public void execute(double elapsedTime)
+    public void execute()
     {
-        drivetrain.drive(elapsedTime,xVelocity,yVelocity);
+        drivetrain.drive(xVelocity,yVelocity);
     }
 
     @Override
@@ -30,7 +30,7 @@ public class DriveByKeyboard extends Command {
     @Override
     public void end()
     {
-        drivetrain.drive(0,0,0);
+        drivetrain.drive(0,0);
     }
 }
 

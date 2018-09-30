@@ -3,7 +3,7 @@ package sample;
 public abstract class Command {
     public void initialize() {}
 
-    public void execute(double elapsedTime) {}
+    public void execute() {}
 
     public abstract boolean isFinished();
 
