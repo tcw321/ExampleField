@@ -1,7 +1,11 @@
 package sample;
 
+import javafx.animation.Animation;
 import javafx.animation.AnimationTimer;
+import javafx.animation.Timeline;
+import javafx.animation.KeyFrame;
 import javafx.application.Application;
+import javafx.util.Duration;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -76,26 +80,22 @@ public class Main extends Application
         Robot theRobot = new Robot(robotSprite);
         theRobot.robotInit();
 
-        new AnimationTimer()
-        {
-            public void handle(long currentNanoTime)
-            {
-                // calculate time since last update.
-                double elapsedTime = (currentNanoTime - lastNanoTime.value) / 1000000000.0;
-                lastNanoTime.value = currentNanoTime;
+        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(20), ev -> {
+            double elapsedTime = 0.020;
+            theRobot.oi.theKeyBoard.updateCommand(input, elapsedTime);
 
-                // game logic
+            gc.clearRect(0, 0, 512,512);
+            robotSprite.render( gc );
 
-                theRobot.oi.theKeyBoard.updateCommand(input, elapsedTime);
+            String pointsText = "Robotics Sim " + elapsedTime;
+            gc.fillText( pointsText, 250, 36 );
+            gc.strokeText( pointsText, 250, 36 );
 
-                gc.clearRect(0, 0, 512,512);
-                robotSprite.render( gc );
+        }));
+        
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.play();
 
-                String pointsText = "Robotics Sim " + elapsedTime;
-                gc.fillText( pointsText, 250, 36 );
-                gc.strokeText( pointsText, 250, 36 );
-            }
-        }.start();
 
         theStage.show();
     }
