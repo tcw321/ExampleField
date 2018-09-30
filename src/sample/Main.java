@@ -73,12 +73,8 @@ public class Main extends Application
 
         IntValue score = new IntValue(0);
 
-        KeyBoard theKeyBoard = new KeyBoard();
-
-        new KeyBoardButton(theKeyBoard, "LEFT");
-        new KeyBoardButton(theKeyBoard, "RIGHT");
-        new KeyBoardButton(theKeyBoard, "UP");
-        new KeyBoardButton(theKeyBoard, "DOWN");
+        Robot theRobot = new Robot();
+        theRobot.robotInit();
 
         new AnimationTimer()
         {
@@ -90,7 +86,7 @@ public class Main extends Application
 
                 // game logic
 
-                theKeyBoard.updateCommand(input);
+                theRobot.oi.theKeyBoard.updateCommand(input);
 
                 robotSprite.setVelocity(0,0);
                 if (input.contains("LEFT"))
