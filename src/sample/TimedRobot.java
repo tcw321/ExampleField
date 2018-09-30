@@ -1,6 +1,7 @@
 package sample;
 
 public class TimedRobot {
+    public static double IntervalInSeconds = 0.02;
 
     private Sprite robotSprite;
 

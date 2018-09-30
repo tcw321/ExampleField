@@ -80,7 +80,7 @@ public class Main extends Application
         Robot theRobot = new Robot(robotSprite);
         theRobot.robotInit();
 
-        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(20), ev -> {
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(theRobot.IntervalInSeconds), ev -> {
 
             theRobot.oi.theKeyBoard.updateCommand(input);
 
@@ -95,7 +95,6 @@ public class Main extends Application
 
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
-
 
         theStage.show();
     }

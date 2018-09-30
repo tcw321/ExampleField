@@ -1,7 +1,8 @@
 package sample;
 
 public class Robot extends TimedRobot {
-    public static final Drivetrain drivetrain = new Drivetrain();
+    public static final Drivetrain drivetrain = new Drivetrain(IntervalInSeconds);
+
     public static OI oi;
 
     public Robot(Sprite robotSprite)

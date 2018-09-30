@@ -3,11 +3,15 @@ package sample;
 public class Drivetrain extends Subsystem {
 
     private Sprite robotSprite;
-    private double elapsedTime;
+    private double intervalInSeconds;
+
+    public Drivetrain(double intervalInSeconds)
+    {
+        this.intervalInSeconds = intervalInSeconds;
+    }
 
     public void addSprite(Sprite robotSprite)
     {
-        elapsedTime = 0.02;
         this.robotSprite = robotSprite;
         robotSprite.setVelocity(0,0);
     }
@@ -16,6 +20,6 @@ public class Drivetrain extends Subsystem {
     {
         robotSprite.setVelocity(0,0);
         robotSprite.addVelocity(x,y);
-        robotSprite.update(elapsedTime);
+        robotSprite.update(intervalInSeconds);
     }
 }
