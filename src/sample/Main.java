@@ -91,9 +91,9 @@ public class Main extends Application
                 gc.clearRect(0, 0, 512,512);
                 robotSprite.render( gc );
 
-                String pointsText = "Robotics Simulation";
-                gc.fillText( pointsText, 360, 36 );
-                gc.strokeText( pointsText, 360, 36 );
+                String pointsText = "Robotics Sim " + elapsedTime;
+                gc.fillText( pointsText, 250, 36 );
+                gc.strokeText( pointsText, 250, 36 );
             }
         }.start();
 
