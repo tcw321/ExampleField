@@ -14,13 +14,15 @@ public class KeyBoard {
         activeButtons.add(button);
     }
 
-    void updateCommand(ArrayList<String> input)
+    void updateCommand(ArrayList<String> input, double elapsedTime)
     {
         if (activeButtons.isEmpty())
             return;
         for (KeyBoardButton oneButton : activeButtons) {
             if (input.contains(oneButton.getName()))
-                oneButton.run();
+                oneButton.run(elapsedTime);
+            else
+                oneButton.end();
         }
     }
 }

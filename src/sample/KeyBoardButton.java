@@ -15,9 +15,14 @@ public class KeyBoardButton {
         return name;
     }
 
-    public void run()
+    public void run(double elapsedTime)
     {
+        command.execute(elapsedTime);
+    }
 
+    public void end()
+    {
+        command.end();
     }
 
     public void whenPressed(Command command)

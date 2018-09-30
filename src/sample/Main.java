@@ -73,7 +73,7 @@ public class Main extends Application
 
         IntValue score = new IntValue(0);
 
-        Robot theRobot = new Robot();
+        Robot theRobot = new Robot(robotSprite);
         theRobot.robotInit();
 
         new AnimationTimer()
@@ -86,21 +86,7 @@ public class Main extends Application
 
                 // game logic
 
-                theRobot.oi.theKeyBoard.updateCommand(input);
-
-                robotSprite.setVelocity(0,0);
-                if (input.contains("LEFT"))
-                    robotSprite.addVelocity(-50,0);
-                if (input.contains("RIGHT"))
-                    robotSprite.addVelocity(50,0);
-                if (input.contains("UP"))
-                    robotSprite.addVelocity(0,-50);
-                if (input.contains("DOWN"))
-                    robotSprite.addVelocity(0,50);
-
-                robotSprite.update(elapsedTime);
-
-                // render
+                theRobot.oi.theKeyBoard.updateCommand(input, elapsedTime);
 
                 gc.clearRect(0, 0, 512,512);
                 robotSprite.render( gc );

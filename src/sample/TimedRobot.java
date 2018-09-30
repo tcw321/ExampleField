@@ -2,6 +2,13 @@ package sample;
 
 public class TimedRobot {
 
+    private Sprite robotSprite;
+
+    public TimedRobot(Sprite robotSprite)
+    {
+        this.robotSprite = robotSprite;
+    }
+
     public void robotInit() {}
 
     public void disabledInit() {}
